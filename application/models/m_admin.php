@@ -292,4 +292,24 @@ class M_admin extends CI_Model
 				$this->db->delete("booking_kursi");
 			}
 	}
+
+	public function get_rekening() {
+		$data = $this->db->select('*')
+				->from('rekening')
+				->get()->result();
+
+		return $data;
+	}
+
+	public function add_rekening($data) {
+		// $data['nama_bank']
+		// $data['no_rekening']
+		// $data['atas_nama']
+		return $this->db->insert("rekening", $data);
+	}
+
+	public function delete_rekening($id = 0) {
+		$this->db->where("id", $id);
+		return $this->db->delete("rekening");
+	}
 }

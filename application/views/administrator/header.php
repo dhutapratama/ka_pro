@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		
-		<div id="header-secondary"><h2 id="head"><img src="<?php echo site_url("css/itlogo1024.png"); ?>" id="logo-ka" height="30px"></img>ADMINISTRATOR</h2></div>
+		<div id="header-secondary"><h2 id="head"><img src="<?php echo site_url("css/itlogo1024.png"); ?>" id="logo-ka" height="30px">ADMINISTRATOR</h2></div>
 
 		<div id="header-primary"> 
 			<ul id="navigation">
@@ -26,6 +26,7 @@
 					<li><a href="<?php echo site_url("administrator/admins"); ?>">User Administrator</a></li>
 					<li><a href="<?php echo site_url("administrator/pending"); ?>">Tiket Tertunda</a></li>
 					<li><a href="<?php echo site_url("administrator/report"); ?>">Report</a></li>
+					<li><a href="<?php echo site_url("administrator/rekening"); ?>">Rekening</a></li>
 					<li><a href="<?php echo site_url("administrator/do_logout"); ?>">Logout</a></li>
 					<li style="float:right; color: #fff; font-size:20px;"><?php echo $this->session->userdata("username") ?></li>
 				<?php } ?>

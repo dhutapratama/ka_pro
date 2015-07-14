@@ -161,4 +161,32 @@ class Administrator extends CI_Controller {
 		$this->load->view('administrator/pending', $output);
 		$this->load->view('administrator/footer');
 	}
+
+	public function rekening($do = "", $id = 0) 
+	{
+		switch ($do) {
+			case '':
+			break;
+
+			case 'create':
+				$data['nama_bank']	 = $this->input->post('nama_bank');
+				$data['no_rekening'] = $this->input->post('no_rekening');
+				$data['atas_nama']	 = $this->input->post('atas_nama');
+				$this->m_admin->add_rekening($data);
+				break;
+
+			case 'delete':
+				$this->m_admin->delete_rekening($id);
+				break;
+			
+			default:
+				
+			break;
+		}
+
+		$output['rekening'] = $this->m_admin->get_rekening();
+		$this->load->view('administrator/header');
+		$this->load->view('administrator/bank', $output);
+		$this->load->view('administrator/footer');
+	}
 }

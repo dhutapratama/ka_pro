@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		
-		<div id="header-secondary"><h2 id="head"><img src="<?php echo site_url("css/itlogo1024.png"); ?>" id="logo-ka" height="30px"></img>Reservasi Tiket Kereta Api Online</h2></div>
+		<div id="header-secondary"><h2 id="head"><img src="<?php echo site_url("css/itlogo1024.png"); ?>" id="logo-ka" height="30px">Reservasi Tiket Kereta Api Online</h2></div>
 
 		<div id="header-primary"> 
 			<ul id="navigation">

@@ -1,6 +1,6 @@
 		
 		<div id="foot">
-					<a href="#">Copyright 2015 Namamu</a>
+					<a href="<?php echo base_url(); ?>">Copyright 2015 Kereta Api Indonesia</a>
 				
 		</div>
 	</body>

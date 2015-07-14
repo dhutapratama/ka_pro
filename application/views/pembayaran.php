@@ -164,13 +164,13 @@
 					
 					<?php if($this->session->userdata("id") == ""){ ?>
 					<p>
-						Silahkan transfer sejumlah harga tiket ke nomor rekening berikut
+						
 						<ul>
 							<li>BCA : 0258954852184</li>
 							<li>BNI : 65498451</li>
 						</ul>
 						Atas Nama : Nama anda
-
+						<br><br>
 						NB: Waktu jatuh tempo pembayaran 1 jam dari sekarang.
 
 						<form action="<?php echo site_url("reservasi/konfirmasi/".$status_pemesanan); ?>">
