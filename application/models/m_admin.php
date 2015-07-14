@@ -239,6 +239,7 @@ class M_admin extends CI_Model
 	}
 
 	public function lunas($id_tiket) {
+		$this->load->config('additional');
 			$data["lunas"] = "1";
 			$this->db->where("session", $id_tiket);
 			$this->db->update("pemesanan", $data);
@@ -251,11 +252,11 @@ class M_admin extends CI_Model
 
 			$this->load->library('email');
             $config['protocol']    = 'smtp';
-            $config['smtp_host']    = 'ssl://smtp.gmail.com';
-            $config['smtp_port']    = '465';
+            $config['smtp_host']    = $this->config->item('smtp_host');
+            $config['smtp_port']    = $this->config->item('smtp_port');
             $config['smtp_timeout'] = '7';
-            $config['smtp_user']    = 'dhutacoc@gmail.com'; // Alamat Email
-            $config['smtp_pass']    = ''; // Password Email
+            $config['smtp_user']    = $this->config->item('email_username'); // Alamat Email
+            $config['smtp_pass']    = $this->config->item('email_password'); // Password Email
             $config['charset']    = 'utf-8';
             $config['newline']    = "\r\n";
             $config['mailtype'] = 'text'; // or html
@@ -312,4 +313,6 @@ class M_admin extends CI_Model
 		$this->db->where("id", $id);
 		return $this->db->delete("rekening");
 	}
+
+	
 }
