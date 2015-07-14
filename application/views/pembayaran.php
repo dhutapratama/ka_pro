@@ -87,7 +87,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<img src="/images/kursi-kereta.png">
+					
 						<?php if($harga_tiket != 0) { ?>
 					<form action="<?php echo site_url("reservasi/cetak_tiket/".$status_pemesanan); ?>" method="post">
 						<input type="hidden" name="tanggal" value="<?php echo $this->input->post("tanggal"); ?>">
@@ -123,9 +123,7 @@
 						for ($i=0; $i < $this->input->post("penumpang"); $i++) { 
 						?>
 						<div class="grid_12">
-							<p>
 								<h4>Penumpang <?php echo $i+1; ?></h4>
-							</p>
 						</div>
 						<div class="grid_4">
 							<p>
@@ -156,28 +154,30 @@
 						</div>
 						<?php
 						} ?>
-						
 					</form>
 					<?php } else {
 						echo "<p>Rute tidak tersedia, Coba dengan rute yang lain!</p>";
 					} ?>
 					
 					<?php if($this->session->userdata("id") == ""){ ?>
-					<p>
-						
-						<ul>
-							<li>BCA : 0258954852184</li>
-							<li>BNI : 65498451</li>
-						</ul>
-						Atas Nama : Nama anda
-						<br><br>
-						NB: Waktu jatuh tempo pembayaran 1 jam dari sekarang.
-
-						<form action="<?php echo site_url("reservasi/konfirmasi/".$status_pemesanan); ?>">
+					<div style="background:#eee">
+						<h4>Konfirmasi Pembayaran</h4>
+						<form action="<?php echo site_url("reservasi/konfirmasi/".$status_pemesanan); ?>" method="post">
+							<label>Nama Pengirim</label>
+							<input type="text" name="nama_pengirim">
+							<label>Nomor Rekening</label>
+							<input type="text" name="no_rekening">
+							<label>Rekening Tujuan</label>
+							<select name="rekening_tujuan">
+								<?php foreach ($rekening as $key => $value) { ?>
+								<option value="<?php echo $value->id ?>"><?php echo $value->nama_bank ."( Rek. No. ".$value->no_rekening.")"; ?></option>
+								<?php } ?>
+							</select>
+							<label>Jumlah Pembayaran</label>
+							<input type="text" name="jumlah_pembayaran">
 							<button type="submit">Konfirmasi Pembayaran</button>
 						</form>
-						
-					</p>
+					</div>
 					<?php } ?>
 				</div>
 			</div>

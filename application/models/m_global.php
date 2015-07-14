@@ -217,4 +217,9 @@ class M_global extends CI_Model
 
 		return $nama;
 	}
+
+	public function update_pemesanan($id, $data) {
+		$this->db->where('session', $id);
+		$this->db->update('pemesanan', $data);
+	}
 }
