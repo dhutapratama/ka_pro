@@ -172,7 +172,7 @@
 									<label>Rekening Tujuan</label>
 									<select name="rekening_tujuan">
 										<?php foreach ($rekening as $key => $value) { ?>
-										<option value="<?php echo $value->id ?>"><?php echo $value->nama_bank ."( Rek. No. ".$value->no_rekening.")"; ?></option>
+										<option value="<?php echo $value->id ?>"><?php echo $value->nama_bank ." ( Rek. No. ".$value->no_rekening.")"; ?></option>
 										<?php } ?>
 									</select>
 								</p>

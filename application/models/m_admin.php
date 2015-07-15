@@ -302,6 +302,15 @@ class M_admin extends CI_Model
 		return $data;
 	}
 
+	public function get_rekening_by_id($id = 0) {
+		$data = $this->db->select('*')
+				->from('rekening')
+				->where('id', $id)
+				->get()->result();
+
+		return $data[0];
+	}
+
 	public function add_rekening($data) {
 		// $data['nama_bank']
 		// $data['no_rekening']
