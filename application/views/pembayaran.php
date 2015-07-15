@@ -71,8 +71,8 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="5" class="pagination">
-									*) Cek kembali rute perjalanan anda sebelum memesan
+								<td colspan="6" class="pagination">
+									*) Cek kembali rute perjalanan anda sebelum melakukan transaksi
 								</td>
 							</tr>
 						</tfoot>
@@ -90,33 +90,26 @@
 					
 						<?php if($harga_tiket != 0) { ?>
 					<form action="<?php echo site_url("reservasi/cetak_tiket/".$status_pemesanan); ?>" method="post">
+						<p>
 						<input type="hidden" name="tanggal" value="<?php echo $this->input->post("tanggal"); ?>">
 						<input type="hidden" name="stasiun_asal" value="<?php echo $this->input->post("stasiun_asal"); ?>">
 						<input type="hidden" name="stasiun_tujuan" value="<?php echo $this->input->post("stasiun_tujuan"); ?>">
 						<?php
 							if ($this->session->userdata("id") == "") { ?>
 								<div class="grid_6">
-									<p>
 										<label>Email</label>
 										<u><?php echo $this->input->post("email"); ?></u>
-									</p>
 								</div>
 						<?php } ?>
 
 						<div class="grid_5">
-							<p>
 								<label>Tagihan</label>
 								<u>Rp <?php echo number_format($harga_tiket*$this->input->post("penumpang"), 2, ',', '.'); ?></u>
-
-							</p>
 						</div>
 						<?php if($this->session->userdata("id") != ""){?>
 						<div class="grid_5">
-							<p>
 								<label>Lunas</label>
 								<u>Saldo anda telah terpotong sebesar Rp <?php echo number_format($harga_tiket*$this->input->post("penumpang"), 2, ',', '.'); ?></u>
-								
-							</p>
 						</div>
 						<?php
 						}
@@ -126,31 +119,23 @@
 								<h4>Penumpang <?php echo $i+1; ?></h4>
 						</div>
 						<div class="grid_4">
-							<p>
 								<label>Nama</label>
 								<u><?php echo $_POST["nama"][$i]; ?></u>
-							</p>
 						</div>
 
 						<div class="grid_4">
-							<p>
 								<label>Nomor KTP</label>
 								<u><?php echo $_POST["identitas"][$i]; ?></u>
-							</p>
 						</div>
 						<div class="grid_3">
-							<p>
 								<label>Nomor Kursi</label>
 								<u><?php echo $this->m_global->get_kursi_by_id($_POST["kursi"][$i]); ?></u>
-							</p>
 						</div>
 						<?php
 						} 
 						if ($this->session->userdata("id") != "") { ?>
 						<div class="grid_12">
-							<p>
 								<input type="submit" value="CETAK TIKET" id="fix-font">
-							</p>
 						</div>
 						<?php
 						} ?>
@@ -158,26 +143,52 @@
 					<?php } else {
 						echo "<p>Rute tidak tersedia, Coba dengan rute yang lain!</p>";
 					} ?>
-					
+						<div class="grid_12">
+							<p>
+								<hr />
+							</p>
+						</div>
 					<?php if($this->session->userdata("id") == ""){ ?>
-					<div style="background:#eee">
-						<h4>Konfirmasi Pembayaran</h4>
+
+						<div class="grid_12">
+							<h4>Konfirmasi Pembayaran</h4>
+						</div>
 						<form action="<?php echo site_url("reservasi/konfirmasi/".$status_pemesanan); ?>" method="post">
-							<label>Nama Pengirim</label>
-							<input type="text" name="nama_pengirim">
-							<label>Nomor Rekening</label>
-							<input type="text" name="no_rekening">
-							<label>Rekening Tujuan</label>
-							<select name="rekening_tujuan">
-								<?php foreach ($rekening as $key => $value) { ?>
-								<option value="<?php echo $value->id ?>"><?php echo $value->nama_bank ."( Rek. No. ".$value->no_rekening.")"; ?></option>
-								<?php } ?>
-							</select>
-							<label>Jumlah Pembayaran</label>
-							<input type="text" name="jumlah_pembayaran">
-							<button type="submit">Konfirmasi Pembayaran</button>
+							<div class="grid_12">
+								<p>
+									<label>Nama Pengirim</label>
+									<input type="text" name="nama_pengirim">
+								</p>
+								
+							</div>
+							<div class="grid_12">
+								<p>
+									<label>Nomor Rekening</label>
+									<input type="text" name="no_rekening">
+								</p>
+							</div>
+							<div class="grid_12">
+								<p>
+									<label>Rekening Tujuan</label>
+									<select name="rekening_tujuan">
+										<?php foreach ($rekening as $key => $value) { ?>
+										<option value="<?php echo $value->id ?>"><?php echo $value->nama_bank ."( Rek. No. ".$value->no_rekening.")"; ?></option>
+										<?php } ?>
+									</select>
+								</p>
+							</div>
+							<div class="grid_12">
+								<p>
+									<label>Jumlah Pembayaran</label>
+									<input type="text" name="jumlah_pembayaran">
+								</p>
+							</div>
+							<div class="grid_12">
+								<p>
+									<input type="submit" class="fix-font" value="Konfirmasi Pembayaran">
+								</p>
+							</div>
 						</form>
 					</div>
 					<?php } ?>
 				</div>
-			</div>

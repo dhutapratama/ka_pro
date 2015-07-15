@@ -1,5 +1,19 @@
-
-		
+<?php 
+$i = 0;
+	foreach ($kursi as $rows_a) {
+		$available = true;
+		foreach ($kursi_booked as $rows_b) { 
+			if ($rows_a->id == $rows_b->id_kursi) {
+				$available = false;
+			}
+		}
+		if ($available == true) {
+			$slots[$i]['id']   = $rows_a->id;
+			$slots[$i]['nama'] = $rows_a->nama_kursi;
+			$i++;
+		}
+	}
+?>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_4">
 					<form action="<?php echo site_url("reservasi"); ?>" method="get">
@@ -133,22 +147,8 @@
 						</p>
 						<p>
 							<label>Nomor Kursi</label>
-							<select name="kursi[]">
-								<?php 
-								foreach ($kursi as $rows_a) {
-									$available = true;
-									foreach ($kursi_booked as $rows_b) { 
-										if ($rows_a->id == $rows_b->id_kursi) {
-											$available = false;
-										}
-									}
-									if ($available == true) {
-								?>
-								<option value="<?php echo $rows_a->id; ?>"><?php echo $rows_a->nama_kursi; ?></option>
-								<?php
-									}
-								} ?>
-							</select>
+							<p><?php echo $slots[$i-1]['nama']; ?></p>
+							<input type="hidden" name="kursi[]" value="<?php echo $slots[$i-1]['id']; ?>">
 						</p>
 						<?php
 						}
